@@ -3,14 +3,117 @@
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">saop</div>
+        <div class="time-weather">
+          <div class="time">16:32:29</div>
+          <div class="weather">
+            <i class="fas fa-cloud-exclamation"></i>
+            <span>天气数据获取失败</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="divider"></div>
+
+      <div class="sections-container">
+        <div class="section">
+          <div class="section-title">
+            <i class="fas fa-th-list"></i>
+            <span>网站列表</span>
+          </div>
+          <div class="links-grid">
+            <div class="link-card">
+              <i class="fas fa-blog"></i>
+              <h3>博客</h3>
+            </div>
+            <div class="link-card">
+              <i class="fas fa-pray"></i>
+              <h3>木鱼</h3>
+            </div>
+            <div class="link-card">
+              <i class="fas fa-video"></i>
+              <h3>监控</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">
+            <i class="fas fa-comments"></i>
+            <span>论坛</span>
+          </div>
+          <div class="forum-content">
+            <h2>Hello, Ubwell !</h2>
+            <p>LINK START!</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">
+            <i class="fas fa-home"></i>
+            <span>首页</span>
+          </div>
+          <div class="links-grid">
+            <div class="link-card">
+              <i class="fas fa-music"></i>
+              <h3>音乐</h3>
+            </div>
+            <div class="link-card">
+              <i class="fas fa-user"></i>
+              <h3>关于</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="social">
+          <a href="#"><i class="fab fa-weibo"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        <div class="copyright">
+          Copyright © 2023 – 2024 Asuma & Made by Imay. © 新浪微博@2023529号
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // 更新时间显示
+      function updateTime() {
+        const now = new Date();
+        const timeElement = document.querySelector(".time");
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+
+      // 初始更新时间
+      updateTime();
+      // 每秒更新一次
+      setInterval(updateTime, 1000);
+
+      // 添加卡片点击效果
+      document.querySelectorAll(".link-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          this.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            this.style.transform = "";
+          }, 200);
+        });
+      });
+    </script>
+  </body>
 </html>
